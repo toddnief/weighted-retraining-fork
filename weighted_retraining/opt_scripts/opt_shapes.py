@@ -125,9 +125,15 @@ def main_loop(args):
 
     # Make results directory
     result_dir = Path(args.result_root).resolve()
-    result_dir.mkdir(parents=True)
+    try:
+        result_dir.mkdir(parents=True)
+    except:
+        pass
     data_dir = result_dir / "data"
-    data_dir.mkdir()
+    try:
+        data_dir.mkdir()
+    except:
+        pass
 
     # Load data
     datamodule = WeightedNumpyDataset(args, utils.DataWeighter(args))
