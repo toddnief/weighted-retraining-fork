@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import DataLoader, TensorDataset, WeightedRandomSampler
 import pytorch_lightning as pl
 
-NUM_WORKERS = 3
+NUM_WORKERS = 1
 
 
 class WeightedNumpyDataset(pl.LightningDataModule):
