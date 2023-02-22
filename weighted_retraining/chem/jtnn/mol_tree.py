@@ -88,6 +88,7 @@ class MolTree(object):
             cmol = get_clique_mol(self.mol, c)
             if not cmol:
                 self.exclude = True
+                break
             node = MolTreeNode(get_smiles(cmol), c)
             self.nodes.append(node)
             if min(c) == 0:
