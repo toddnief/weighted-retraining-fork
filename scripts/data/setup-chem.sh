@@ -26,18 +26,18 @@ python "$logP_script" \
 # Next, we preprocess all the data (takes a VERY long time sadly...)
 
 # Training set
-out_dir="$chem_dir"/tensors_train
-mkdir "$out_dir"
-python "$preprocess_script" \
-    -t "$chem_dir"/train.txt \
-    -d "$out_dir" 
+# out_dir="$chem_dir"/tensors_train
+# mkdir "$out_dir"
+# python "$preprocess_script" \
+#     -t "$chem_dir"/train.txt \
+#     -d "$out_dir" 
 
 # Validation set
-out_dir="$chem_dir"/tensors_val
-mkdir "$out_dir"
-python "$preprocess_script" \
-    -t "$chem_dir"/val.txt \
-    -d "$out_dir" 
+# out_dir="$chem_dir"/tensors_val
+# mkdir "$out_dir"
+# python "$preprocess_script" \
+#     -t "$chem_dir"/val.txt \
+#     -d "$out_dir" 
 
 # Tiny training set (for testing)
 out_dir="$chem_dir"/tensors_train_tiny
