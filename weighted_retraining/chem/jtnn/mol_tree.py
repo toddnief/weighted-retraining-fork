@@ -95,6 +95,8 @@ class MolTree(object):
                 root = i
 
         for x, y in edges:
+            if self.exclude:
+                break
             self.nodes[x].add_neighbor(self.nodes[y])
             self.nodes[y].add_neighbor(self.nodes[x])
 
@@ -102,6 +104,8 @@ class MolTree(object):
             self.nodes[0], self.nodes[root] = self.nodes[root], self.nodes[0]
 
         for i, node in enumerate(self.nodes):
+            if self.exclude:
+                break
             node.nid = i + 1
             if len(node.neighbors) > 1:  # Leaf node mol is not marked
                 set_atommap(node.mol, node.nid)
