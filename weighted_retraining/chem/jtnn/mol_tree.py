@@ -44,9 +44,12 @@ class MolTreeNode(object):
 
         clique = list(set(clique))
         label_mol = get_clique_mol(original_mol, clique)
+        
+        # error handling
         self.exclude = False
         if not label_mol:
             self.exclude = True
+            self.label = None
         if not self.exclude:
             self.label = Chem.MolToSmiles(Chem.MolFromSmiles(get_smiles(label_mol)))
 
@@ -121,6 +124,10 @@ class MolTree(object):
     def recover(self):
         if not self.exclude:
             for node in self.nodes:
+                # even more error handling
+                if node.exclude:
+                    self.exclude = True
+                    break
                 node.recover(self.mol)
 
     def assemble(self):
