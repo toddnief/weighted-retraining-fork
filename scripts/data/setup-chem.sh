@@ -17,11 +17,11 @@ logP_script="weighted_retraining/chem/calc_penalized_logP.py"
 #   --output_file=data/chem/zinc/orig_model/vocab-CHECK.txt
 
 # Calculate penalized logP for all files
-all_smiles_file="$chem_dir/all.txt"
-cat "$chem_dir/train.txt" "$chem_dir/val.txt" > "$all_smiles_file"
-python "$logP_script" \
-    --input_file "$chem_dir/train.txt" "$chem_dir/val.txt" \
-    --output_file="$chem_dir/pen_logP_all.pkl"
+# all_smiles_file="$chem_dir/all.txt"
+# cat "$chem_dir/train.txt" "$chem_dir/val.txt" > "$all_smiles_file"
+# python "$logP_script" \
+#     --input_file "$chem_dir/train.txt" "$chem_dir/val.txt" \
+#     --output_file="$chem_dir/pen_logP_all.pkl"
 
 # Next, we preprocess all the data (takes a VERY long time sadly...)
 
