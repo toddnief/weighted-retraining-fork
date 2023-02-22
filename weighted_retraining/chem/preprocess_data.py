@@ -41,10 +41,17 @@ if __name__ == "__main__":
 
     # Process all data in the regime start-end
     print("Processing data!!!")
-    all_data = [
-        tensorize(s)
-        for s in tqdm(data[args.start : args.end], smoothing=0, dynamic_ncols=True)
-    ]
+    # all_data = [
+    #     tensorize(s)
+    #     for s in tqdm(data[args.start : args.end], smoothing=0, dynamic_ncols=True)
+    # ]
+
+    # rewrite to handle molecules that don't work
+    all_data = []
+    for s in tqdm(data[args.start : args.end], smoothing=0, dynamic_ncols=True):
+        mol = tensorize(s)
+        if mol:
+            all_data.append(s)
 
     # For easiness, pad all data at the start so the indices
     # of data and all_data are the same

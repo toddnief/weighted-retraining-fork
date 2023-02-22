@@ -86,11 +86,17 @@ def copy_edit_mol(mol):
 
 
 def get_clique_mol(mol, atoms):
-    smiles = Chem.MolFragmentToSmiles(mol, atoms, kekuleSmiles=True)
-    new_mol = Chem.MolFromSmiles(smiles, sanitize=False)
-    new_mol = copy_edit_mol(new_mol).GetMol()
-    new_mol = sanitize(new_mol)  # We assume this is not None
-    return new_mol
+    try:
+        smiles = Chem.MolFragmentToSmiles(mol, atoms, kekuleSmiles=True)
+        new_mol = Chem.MolFromSmiles(smiles, sanitize=False)
+        new_mol = copy_edit_mol(new_mol).GetMol()
+        new_mol = sanitize(new_mol)  # We assume this is not None
+        return new_mol
+    except:
+        return None
+
+
+
 
 
 def tree_decomp(mol):
