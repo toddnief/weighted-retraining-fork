@@ -115,8 +115,9 @@ class MolTree(object):
         return len(self.nodes)
 
     def recover(self):
-        for node in self.nodes:
-            node.recover(self.mol)
+        if not self.exclude:
+            for node in self.nodes:
+                node.recover(self.mol)
 
     def assemble(self):
         for node in self.nodes:

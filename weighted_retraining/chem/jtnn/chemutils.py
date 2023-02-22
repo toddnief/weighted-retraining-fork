@@ -27,7 +27,10 @@ def get_mol(smiles):
 
 
 def get_smiles(mol):
-    return Chem.MolToSmiles(mol, kekuleSmiles=True)
+    if mol:
+        return Chem.MolToSmiles(mol, kekuleSmiles=True)
+    else:
+        return None
 
 
 def decode_stereo(smiles2D):
