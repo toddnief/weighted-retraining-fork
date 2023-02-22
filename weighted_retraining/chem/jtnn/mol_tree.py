@@ -73,6 +73,7 @@ class MolTree(object):
     def __init__(self, smiles):
         self.smiles = smiles
         self.mol = get_mol(smiles)
+        self.exclude = False
 
         # Stereo Generation (currently disabled)
         # mol = Chem.MolFromSmiles(smiles)
@@ -85,6 +86,8 @@ class MolTree(object):
         root = 0
         for i, c in enumerate(cliques):
             cmol = get_clique_mol(self.mol, c)
+            if not cmol:
+                self.exclude = True
             node = MolTreeNode(get_smiles(cmol), c)
             self.nodes.append(node)
             if min(c) == 0:

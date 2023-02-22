@@ -32,7 +32,7 @@ def get_vocab_from_smiles(smiles):
 
 def tensorize(smiles, assm=True):
     mol_tree = MolTree(smiles)
-    if not mol_tree.cmol:
+    if mol_tree.exclude:
         return None
 
     mol_tree.recover()
