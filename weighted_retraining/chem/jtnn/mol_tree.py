@@ -44,6 +44,7 @@ class MolTreeNode(object):
 
         clique = list(set(clique))
         label_mol = get_clique_mol(original_mol, clique)
+        self.exclude = False
         if not label_mol:
             self.exclude = True
         if not self.exclude:
