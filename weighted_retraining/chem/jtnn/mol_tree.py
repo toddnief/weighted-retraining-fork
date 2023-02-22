@@ -22,6 +22,9 @@ class MolTreeNode(object):
         self.clique = [x for x in clique]  # copy
         self.neighbors = []
 
+        # error handling
+        self.exclude = False
+
     def add_neighbor(self, nei_node):
         self.neighbors.append(nei_node)
 
@@ -46,7 +49,6 @@ class MolTreeNode(object):
         label_mol = get_clique_mol(original_mol, clique)
         
         # error handling
-        self.exclude = False
         if not label_mol:
             self.exclude = True
             self.label = None
