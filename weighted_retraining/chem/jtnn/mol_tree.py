@@ -44,7 +44,10 @@ class MolTreeNode(object):
 
         clique = list(set(clique))
         label_mol = get_clique_mol(original_mol, clique)
-        self.label = Chem.MolToSmiles(Chem.MolFromSmiles(get_smiles(label_mol)))
+        if not label_mol:
+            self.exclude = True
+        if not self.exclude:
+            self.label = Chem.MolToSmiles(Chem.MolFromSmiles(get_smiles(label_mol)))
 
         for cidx in clique:
             original_mol.GetAtomWithIdx(cidx).SetAtomMapNum(0)

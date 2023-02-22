@@ -36,6 +36,10 @@ def tensorize(smiles, assm=True):
         return None
 
     mol_tree.recover()
+
+    if mol_tree.exclude:
+        return None
+    
     if assm:
         mol_tree.assemble()
         for node in mol_tree.nodes:
