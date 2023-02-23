@@ -7,6 +7,10 @@ query_budget=500
 n_retrain_epochs=0.1
 n_init_retrain_epochs=1
 
+# File flags
+train_folder="tensors_train_tiny"
+val_folder="tensors_val_tiny"
+
 # Experiment 1: weighted retraining with different parameters
 # ==================================================
 k_high="1e-1"
@@ -49,8 +53,8 @@ for seed in "${seed_array[@]}"; do
             --result_root="${root_dir}/${weight_type}/k_${k}/r_${r}/seed${seed}" \
             --pretrained_model_file="$start_model" \
             --lso_strategy="$lso_strategy" \
-            --train_path=data/chem/zinc/orig_model/tensors_train \
-            --val_path=data/chem/zinc/orig_model/tensors_val \
+            --train_path=data/chem/zinc/orig_model/${train_folder} \
+            --val_path=data/chem/zinc/orig_model/${val_folder} \
             --vocab_file=data/chem/zinc/orig_model/vocab.txt \
             --property_file=data/chem/zinc/orig_model/pen_logP_all.pkl \
             --n_retrain_epochs="$n_retrain_epochs" \
