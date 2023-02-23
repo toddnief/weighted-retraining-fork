@@ -83,8 +83,8 @@ rwr_alpha_list=( "1e-1" "1.0" )  # Max is alpha * value ~= 1
 # Base command
 base_command="python weighted_retraining/opt_scripts/opt_chem.py "\
 "$gpu "\
-"--train_path=data/chem/zinc/orig_model/tensors_train "\
-"--val_path=data/chem/zinc/orig_model/tensors_val "\
+"--train_path=data/chem/zinc/orig_model/$train_folder "\
+"--val_path=data/chem/zinc/orig_model/$val_folder "\
 "--vocab_file=data/chem/zinc/orig_model/vocab.txt "\
 "--property_file=data/chem/zinc/orig_model/pen_logP_all.pkl "\
 "--query_budget=$query_budget "\
